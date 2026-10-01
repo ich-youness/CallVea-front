@@ -82,14 +82,16 @@ ${notes || "None specified"}
 
       if (result.success) {
         return NextResponse.json({ success: true, message: "Demo request submitted successfully" });
-      } else {
-        console.warn("Web3Forms response:", result);
-        return NextResponse.json({ success: true, message: "Request received" });
       }
+      console.warn("Web3Forms rejected the submission:", result);
     } catch (networkError) {
-      console.warn("Network error reaching Web3Forms, logged locally:", networkError);
-      return NextResponse.json({ success: true, message: "Request logged successfully" });
+      console.warn("Network error reaching Web3Forms:", networkError);
     }
+    // Nothing was delivered, so say so; the form shows an error instead of a false success.
+    return NextResponse.json(
+      { success: false, message: "Could not deliver the request" },
+      { status: 502 }
+    );
   } catch (error) {
     console.error("API error in /api/contact:", error);
     return NextResponse.json(

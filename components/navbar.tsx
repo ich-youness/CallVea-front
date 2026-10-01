@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowRight, PhoneCall, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MapleLeaf } from "@/components/maple-leaf";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,6 +72,7 @@ export function Navbar() {
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
               AI
             </span>
+            <MapleLeaf className="h-[18px] w-[17px] shrink-0" />
           </div>
         </Link>
 

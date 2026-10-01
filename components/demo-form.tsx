@@ -136,6 +136,8 @@ ${data.notes ? data.notes : "None specified"}
 ========================================
 `;
 
+    // Only report success once a lead has actually been delivered.
+    let sent = false;
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -161,28 +163,31 @@ ${data.notes ? data.notes : "None specified"}
       });
 
       const resData = await response.json();
-      if (response.ok && resData.success) {
-        setIsSuccess(true);
-        reset();
-      } else {
+      sent = response.ok && resData.success === true;
+    } catch {
+      // Network error or an ad blocker; fall back to the server route.
+    }
+
+    if (!sent) {
+      try {
         const localRes = await fetch("/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
-        if (localRes.ok) {
-          setIsSuccess(true);
-          reset();
-        } else {
-          setErrorMessage("Failed to send your request. Please try again or email us directly at contact@callvea.com.");
-        }
+        sent = localRes.ok;
+      } catch {
+        sent = false;
       }
-    } catch {
+    }
+
+    if (sent) {
       setIsSuccess(true);
       reset();
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      setErrorMessage("We couldn't send your request. Please try again, or call us at 613-263-2935.");
     }
+    setIsSubmitting(false);
   };
 
   return (

@@ -3,11 +3,13 @@
 import * as React from "react";
 import {
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroVideo } from "@/components/hero-video";
+import { LIVE_DEMO_URL } from "@/lib/links";
 
 export function Hero() {
   const scrollTo = (id: string) => {
@@ -63,14 +65,19 @@ export function Hero() {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
 
-            <Button
-              size="lg"
-              variant="secondary"
-              onClick={() => scrollTo("#how-it-works")}
-              className="w-full sm:w-auto border border-zinc-800 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 flex items-center justify-center gap-2 px-8 py-6 text-base rounded-xl"
+            <a
+              href={LIVE_DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 h-12 px-8 text-base font-semibold rounded-xl border border-cyan-500/30 bg-zinc-900/80 hover:bg-zinc-800 hover:border-cyan-400/50 text-zinc-100 transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
             >
-              See How It Works
-            </Button>
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-400" />
+              </span>
+              <span>Talk to Our AI Live</span>
+              <ArrowUpRight className="w-4 h-4 text-zinc-400" />
+            </a>
           </div>
 
           {/* Key Value Points */}

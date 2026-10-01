@@ -2,7 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ShieldCheck, Lock, Activity, ArrowUpRight, PhoneCall } from "lucide-react";
+import { ArrowUpRight, Mail, PhoneCall } from "lucide-react";
+import { MapleLeaf } from "@/components/maple-leaf";
+import { LIVE_DEMO_URL } from "@/lib/links";
 
 export function Footer() {
   const scrollTo = (id: string) => {
@@ -21,8 +23,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-zinc-850">
           
-          {/* Company Brand Column (5 Cols) */}
-          <div className="md:col-span-5 space-y-4">
+          {/* Company Brand Column (6 Cols) */}
+          <div className="md:col-span-6 space-y-4">
             <Link
               href="/"
               className="inline-flex items-center gap-2.5 group focus:outline-none"
@@ -45,6 +47,7 @@ export function Footer() {
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                   AI
                 </span>
+                <MapleLeaf className="h-[18px] w-[17px] shrink-0" />
               </div>
             </Link>
             
@@ -68,11 +71,19 @@ export function Footer() {
                 <PhoneCall className="w-3.5 h-3.5 text-cyan-400" />
                 <span>613-263-2935</span>
               </a>
+
+              <a
+                href="mailto:contact@callvea.com"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 hover:border-zinc-700 text-xs text-zinc-300 hover:text-cyan-300 transition-colors font-mono"
+              >
+                <Mail className="w-3.5 h-3.5 text-cyan-400" />
+                <span>contact@callvea.com</span>
+              </a>
             </div>
           </div>
 
-          {/* Navigation Links (2 Cols) */}
-          <div className="md:col-span-2 space-y-3 text-sm">
+          {/* Navigation Links (3 Cols) */}
+          <div className="md:col-span-3 space-y-3 text-sm">
             <div className="font-semibold text-zinc-200 uppercase tracking-wider text-xs font-mono">
               Product
             </div>
@@ -118,6 +129,17 @@ export function Footer() {
                 </button>
               </li>
               <li>
+                <a
+                  href={LIVE_DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-white transition-colors"
+                >
+                  Live AI Demo
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </li>
+              <li>
                 <button
                   onClick={() => scrollTo("#faq")}
                   className="hover:text-white transition-colors"
@@ -128,8 +150,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Industries (2 Cols) */}
-          <div className="md:col-span-2 space-y-3 text-sm">
+          {/* Industries (3 Cols) */}
+          <div className="md:col-span-3 space-y-3 text-sm">
             <div className="font-semibold text-zinc-200 uppercase tracking-wider text-xs font-mono">
               Industries
             </div>
@@ -175,30 +197,6 @@ export function Footer() {
                 </button>
               </li>
             </ul>
-          </div>
-
-          {/* Compliance & Security (3 Cols) */}
-          <div className="md:col-span-3 space-y-3 text-sm">
-            <div className="font-semibold text-zinc-200 uppercase tracking-wider text-xs font-mono">
-              Enterprise Trust
-            </div>
-            <p className="text-xs text-zinc-500 leading-relaxed">
-              Callvea adheres to strict industry compliance and data isolation standards.
-            </p>
-            <div className="space-y-2 pt-1">
-              <div className="flex items-center gap-2 text-xs text-zinc-300">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>End-to-End Encrypted</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-zinc-300">
-                <Lock className="w-4 h-4 text-indigo-400" />
-                <span>SOC-2 Type II Certified Datacenters</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-zinc-300">
-                <Activity className="w-4 h-4 text-cyan-400" />
-                <span>Carrier-Grade High Availability</span>
-              </div>
-            </div>
           </div>
 
         </div>
