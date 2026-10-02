@@ -1,0 +1,19 @@
+# callvea.com website. No public ports: the edge proxy (vps-edge) routes
+# callvea.com and www.callvea.com here over the shared "edge" network.
+name: callvea-site
+
+services:
+  site:
+    build: .
+    restart: unless-stopped
+    environment:
+      # Optional: overrides the Web3Forms key the contact form's server fallback uses.
+      WEB3FORMS_ACCESS_KEY: ${WEB3FORMS_ACCESS_KEY:-}
+    networks:
+      edge:
+        aliases:
+          - callvea-site
+
+networks:
+  edge:
+    external: true
