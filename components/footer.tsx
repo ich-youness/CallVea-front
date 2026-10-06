@@ -204,11 +204,13 @@ export function Footer() {
         {/* Bottom copyright and legal */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <div>
-            © {new Date().getFullYear()} Callvea Inc. (callvea.com). All rights reserved.
+            © {new Date().getFullYear()} Callvea (callvea.com). All rights reserved.
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-zinc-300 transition-colors">Terms of Use</Link>
+            <Link href="/fr/confidentialite" lang="fr" hrefLang="fr" className="hover:text-zinc-300 transition-colors">Confidentialité</Link>
+            <Link href="/fr/conditions" lang="fr" hrefLang="fr" className="hover:text-zinc-300 transition-colors">{"Conditions d’utilisation"}</Link>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Customer Support AI",
     "After-Hours Answering Service",
   ],
-  authors: [{ name: "Callvea Inc." }],
+  authors: [{ name: "Callvea" }],
   openGraph: {
     title: "Callvea | 24/7 Enterprise AI Voice Agents",
     description:
